@@ -1,0 +1,17 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+ul{
+  font-size: 12pt;
+}
+p{
+  font-size: 12pt;
+}
+form{
+  font-size: 12pt;
+}
+.cardBody{
+  background-color: rgba(255, 255, 255, 0.4);
+  font-size: 14pt;
+}

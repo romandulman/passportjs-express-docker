@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Simple PassportJS Login</title>
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 formBody">
+            <div class="card">
+                <div class="card-header">
+                    <b>My Profile</b>
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>
+                            ID: <%= user.id %><br/>
+                            Username: <%= user.username %><br/>
+                            Name: <%= user.displayName %><br/>
+                            <% if (user.emails) { %>
+                            Email: <%= user.emails[0].value %><br/>
+                            <% } %>
+                            <br>
+                            <a class="btn btn-primary" href="/">back</a>
+                            <a class="btn btn-danger" href="/logout">Logout</a>
+                        </p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <p class="text-center">Coded By: Roman Dulman 2019</p>
+</div>
+<script src="javascripts\jquery-3.3.1.min.js"></script>
+<script src="javascripts/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Simple PassportJS Login</title>
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 formBody">
+            <div class="card">
+                <div class="card-header">
+                    <b>Login</b>
+                </div>
+                <div class="card-body cardBody">
+                    <blockquote class="blockquote mb-0">
+                        <% if (!user) { %>
+                        <ul>
+                            This is simple username and password authentication using:
+                            <br>
+                            <li>PassportJS</li>
+                            <li>NodeJS Express</li>
+                            <li>HTML5 Bootstrap</li>
+                        </ul>
+                        <a class="btn btn-primary" href="/login" role="button">Login</a>
+                        <br>
+                        <br>
+                        <% } else { %>
+                        <p>Hello, <%= user.username %>. View your <a href="/user-profile">Profile</a> or <a
+                                    href="/logout">Logout</a></p>
+                        <% } %>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <p class="text-center">Coded By: Roman Dulman 2019</p>
+</div>
+<script src="javascripts\jquery-3.3.1.min.js"></script>
+<script src="javascripts/bootstrap.min.js"></script>
+</body>
+</html>
