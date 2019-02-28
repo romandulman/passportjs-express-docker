@@ -3,6 +3,6 @@ This is demo of impelmation  username and password authentication with:
 * PassportJS
 * NodeJS Express
 * HTML5 Bootstrap Form (EJS)
-* Dockerfile for deploy to docker container
+* Dockerfile for deployment to docker container
 
  
