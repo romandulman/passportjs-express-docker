@@ -1,15 +1,12 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var db = require('./db');
-
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var app = express();
 
 passport.use(new Strategy(
     function (username, password, cb) {
@@ -40,7 +37,6 @@ passport.deserializeUser(function (id, cb) {
         cb(null, user);
     });
 });
-var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(logger('dev'));
@@ -54,7 +50,6 @@ app.use(require('express-session')({secret: 'keyboard cat', resave: false, saveU
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 app.use(function (req, res, next) {
     next(createError(404));
