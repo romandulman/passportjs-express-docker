@@ -5,7 +5,6 @@ var logger = require('morgan');
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var db = require('./db');
-var indexRouter = require('./routes/index');
 var app = express();
 
 passport.use(new Strategy(
@@ -49,7 +48,41 @@ app.use(require('body-parser').urlencoded({extended: true}));
 app.use(require('express-session')({secret: 'keyboard cat', resave: false, saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use('/', indexRouter);
+
+
+app.get('/',
+    function (req, res) {
+        res.render('index', {user: req.user});
+    });
+
+app.get('/login',
+    function (req, res) {
+        res.render('login');
+    });
+
+app.post('/login',
+    passport.authenticate('local', {failureRedirect: '/failure'}),
+    function (req, res) {
+        res.redirect('/');
+    });
+
+app.get('/logout',
+    function (req, res) {
+        req.logout();
+        res.redirect('/');
+    });
+
+app.get('/user-profile',
+    require('connect-ensure-login').ensureLoggedIn(),
+    function (req, res) {
+        res.render('user-profile', {user: req.user});
+    });
+
+app.get('/failure',
+    function (req, res) {
+        res.render('failure');
+    });
+
 
 app.use(function (req, res, next) {
     next(createError(404));
